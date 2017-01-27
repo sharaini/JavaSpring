@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<!-- If all beans use the same myInit and myDestroy method you dont have to configure locally we can do it globally across -->
+<!-- <beans default-init-method="myInit" default-destroy-method="cleanUp" -->
+<beans>
+	<bean id="triangle1" class="org.sharath.Triangle7" init-method="myInit" destroy-method="myDestroy">
+		<property name="pointA" ref="pointA"/>
+		<property name="pointB" ref="pointB"/>
+		<property name="pointC" ref="pointC"/>
+	</bean>
+	<bean id="pointA" class="org.sharath.Point" scope="prototype">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>		
+	</bean>
+	<bean id="pointB" class="org.sharath.Point">
+		<property name="x" value="20"/>
+		<property name="y" value="0"/>
+	</bean>
+	<bean id="pointC" class="org.sharath.Point">
+		<property name="x" value="20"/>
+		<property name="y" value="0"/>
+	</bean>
+	<!-- 
+	<bean class="org.sharath.Disbeanposproces"/>
+	 -->
+	 <bean class="org.sharath.MyBeanPP"/>
+	 
+</beans>

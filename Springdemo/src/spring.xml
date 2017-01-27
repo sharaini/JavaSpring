@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="triangle" class="org.sharath.Triangle1" name="triangle-name">
+		<!--<property name="type" value="equilateral"/>
+		<constructor-arg value="equilateral"/>
+		<constructor-arg value="20"/>
+		 
+		 <constructor-arg type="int" value="20"></constructor-arg>
+		 
+		 
+		 <constructor-arg index="0" value="equilateral"/>
+		 <constructor-arg index="1" value="20"/>
+		 If the bean is not used much we can use the inner bean
+		 
+		 -->
+		 
+		 <!-- If you want to restrict the ref to point to id rather then name or aliases you have to use the  idref-->
+		 <property name="pointA" >
+		 	<idref="zeroPoint">
+		 </property>
+		 <property name="pointB">
+		 	<bean class="org.sharath.Point">
+		 		<property name="x" value="20"/>
+		 		<property name="y" value="0"/>	 		
+		 	</bean>
+		 </property>
+		 <!-- You can have name id aliases as many as you want -->
+		 <property name="pointC" ref="point3"/>
+		 
+	</bean>
+	<bean id="zeroPoint" class="org.sharath.Point">
+	<!-- Equivalent to calling new Point()
+	 -->
+	 <property name="x" value="0"/>
+	 <property name="y" value="0"/>
+	 </bean>
+	 <!-- <bean id="point2" class="org.sharath.Point"> 
+	 <property name="x" value="20"/>
+	 <property name="y" value="0"/>
+	 </bean>
+	  -->
+	 <bean id="point3" class="org.sharath.Point">
+	<!-- Equivalent to calling new Point()
+	 -->
+	 <property name="x" value="-20"/>
+	 <property name="y" value="0"/>
+	 </bean>
+	 <alias name="triangle" alias="triangle.alias"/>
+</beans>

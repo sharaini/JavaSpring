@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+	<bean id="pointA" class="org.sharath.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>		
+	</bean>
+	
+	<bean id="circle1" class="org.sharath.Circle4">
+	    <property name="center" ref="pointA"/>
+	</bean>
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<!-- If you have multiple property files you have to provide all the property files -->
+		<property name="basenames">
+			<list>
+				<value>MyMessages</value>
+			</list>
+		</property>
+	</bean>
+	<context:annotation-config/><!-- for loading annotation classes -->
+	<context:component-scan base-package="org.sharath"></context:component-scan> <!-- for scanning the components/beans in base package -->
+	
+</beans>

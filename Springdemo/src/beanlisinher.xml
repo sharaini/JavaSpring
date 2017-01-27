@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- You cant only inherit you can can also add to the list and use abstract=true if you dont want to implement parent config-->
+	<bean id="parenttriangle" class="org.sharath.Triangle5">
+		<property name="points">
+			<list>
+				<ref bean="pointA"/>				
+			</list>
+		</property>
+	</bean>	
+	<bean id="triangle1" class="org.sharath.Triangle5" parent="parenttriangle">
+		<property name="points">
+		<list merge="true">
+			<ref bean="pointB"/>
+		</list>
+		</property>
+	</bean>
+	<bean id="pointA" class="org.sharath.Point" scope="prototype">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>		
+	</bean>
+	<bean id="pointB" class="org.sharath.Point">
+		<property name="x" value="20"/>
+		<property name="y" value="0"/>
+	</bean>
+	<bean id="pointC" class="org.sharath.Point">
+		<property name="x" value="20"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+</beans>

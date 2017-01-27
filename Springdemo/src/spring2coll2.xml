@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- Auto wiring helps us to skip some of the configuration we have to do -->
+	<!-- auto wire by name looks for the name in class file whereas byType can be used in a scenario where there is just one type in xml file -->
+	<!-- autowire constructor instead of setter injection you would do a constructor injection -->
+	<!-- applicationcontext creates the beans when initialized and hands the bean when object calls the application context factory which uses the spring xml -->
+	<!-- Bean Scopes
+		Singleton only once per spring container
+		initializes one bean per defination and no matter how many calls it hands the same instance 
+	 	by default all beans are singleton ,getBean always get the same instance
+	 	
+	 	Prototype(for every ref of getBean or for every ref of an object thats dependent on this object)
+	 	new bean is created with every request or reference
+	 	we have triangle as a prototype,if another class made a call to the getBean and passed a triangle id then spring container would create new object whenever theres a getbean
+	 	even if its a part of ref or name it would create a new object
+	 	
+	 	web aware context bean scopes
+	 	jsp or servlet app you could use spring to create objects related to servlets or create servlets for jsp or servlet
+	 	spring is capable of knowing when there is a new request when there is a new session
+	 	
+	 	request scope- new bean per servlet request
+	 	session - new bean per session
+	 	when ther is a new user or new session new bean is created
+	 	global session- new bean per global http session(portlet context)
+	 	
+	 -->
+	<bean id="triangle" class="org.sharath.Triangle3" autowire="byName" scope="prototype">
+	</bean>
+	<bean id="pointA" class="org.sharath.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>		
+	</bean>
+	<bean id="pointB" class="org.sharath.Point">
+		<property name="x" value="20"/>
+		<property name="y" value="0"/>
+	</bean>
+	<bean id="pointC" class="org.sharath.Point">
+		<property name="x" value="20"/>
+		<property name="y" value="0"/>
+	</bean>
+</beans>

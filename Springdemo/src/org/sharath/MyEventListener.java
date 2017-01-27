@@ -1,0 +1,15 @@
+package org.sharath;
+
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
+import org.springframework.stereotype.Component;
+@Component
+public class MyEventListener implements ApplicationListener{
+//whatever event is published this message is called
+	@Override
+	public void onApplicationEvent(ApplicationEvent event) {
+		// TODO Auto-generated method stub
+		System.out.println("shhh"+event.toString());
+	}
+
+}
